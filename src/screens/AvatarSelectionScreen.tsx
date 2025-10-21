@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Alert, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RegistrationStackParamList } from '../types/MyMDiaryTypes';
-import CloudBackground from '../components/MyMDiaryCloudBackground';
+import { RegistrationStackParamList } from '../types';
+import CloudBackground from '../components/CloudBackground';
 import { launchImageLibrary, ImagePickerResponse, MediaType } from 'react-native-image-picker';
 
 type AvatarSelectionScreenNavigationProp = StackNavigationProp<RegistrationStackParamList, 'AvatarSelection'>;

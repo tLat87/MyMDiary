@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface CloudBackgroundProps {
   children: React.ReactNode;
@@ -12,22 +11,17 @@ const CloudBackground: React.FC<CloudBackgroundProps> = ({
   backgroundImage = require('../assets/background.png') // Path to PNG background image
 }) => {
   return (
-    <SafeAreaView style={styles.safeArea} edges={['top']}>
-      <ImageBackground
-        source={backgroundImage}
-        style={styles.container}
-        resizeMode="cover"
-      >
-        {children}
-      </ImageBackground>
-    </SafeAreaView>
+    <ImageBackground
+      source={backgroundImage}
+      style={styles.container}
+      resizeMode="cover"
+    >
+      {children}
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
   container: {
     flex: 1,
   },

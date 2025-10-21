@@ -34,9 +34,11 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSCameraUsageDescription</key>
-	<string>This app needs access to camera to take photos for your avatar</string>
+	<string>My Mood Flower Diary needs access to camera to take photos for your diary entries and avatar</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app needs access to photo library to select photos for your avatar</string>
+	<string>My Mood Flower Diary needs access to photo library to select photos for your diary entries and avatar</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>My Mood Flower Diary needs access to microphone to record videos for your diary entries</string>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

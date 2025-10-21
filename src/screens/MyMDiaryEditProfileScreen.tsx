@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingTop: 20,
   },
   avatarSection: {
     alignItems: 'center',

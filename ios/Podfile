@@ -20,7 +20,10 @@ target 'MyMDiary' do
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
-    :app_path => "#{Pod::Config.instance.installation_root}/.."
+    :app_path => "#{Pod::Config.instance.installation_root}/..",
+    # Disable New Architecture
+    :fabric_enabled => false,
+    :hermes_enabled => true
   )
 
   post_install do |installer|
@@ -32,10 +35,23 @@ target 'MyMDiary' do
       # :ccache_enabled => true
     )
     
-    # Copy vector icons
+    # Fix C++ compilation issues
     installer.pods_project.targets.each do |target|
-      if target.name == 'react-native-vector-icons'
-        target.build_configurations.each do |config|
+      target.build_configurations.each do |config|
+        # Fix C++ standard library issues
+        config.build_settings['CLANG_CXX_LANGUAGE_STANDARD'] = 'c++20'
+        config.build_settings['CLANG_CXX_LIBRARY'] = 'libc++'
+        
+        # Fix deployment target
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+        
+        # Fix C++ compilation issues
+        config.build_settings['GCC_C_LANGUAGE_STANDARD'] = 'gnu11'
+        config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'NO'
+        config.build_settings['CLANG_WARN_DOCUMENTATION_COMMENTS'] = 'NO'
+        
+        # Fix vector icons
+        if target.name == 'react-native-vector-icons'
           config.build_settings['OTHER_LDFLAGS'] ||= ['$(inherited)']
           config.build_settings['OTHER_LDFLAGS'] << '-ObjC'
         end

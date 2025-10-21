@@ -8,6 +8,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigator from './src/navigation/MyMDiaryAppNavigator';
 
 function App() {

@@ -3,31 +3,31 @@ import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import PNGIcon from '../components/MyMDiaryPNGIcon';
+import PNGIcon from '../components/PNGIcon';
 
-import { MainTabParamList, RootStackParamList, OnboardingStackParamList, RegistrationStackParamList } from '../types/MyMDiaryTypes';
-import { storage } from '../utils/MyMDiaryStorage';
-import { UserProfile } from '../types/MyMDiaryTypes';
+import { MainTabParamList, RootStackParamList, OnboardingStackParamList, RegistrationStackParamList } from '../types';
+import { storage } from '../utils/storage';
+import { UserProfile } from '../types';
 
 // Onboarding screens
-import Onboarding1Screen from '../screens/MyMDiaryOnboarding1Screen';
-import Onboarding2Screen from '../screens/MyMDiaryOnboarding2Screen';
-import Onboarding3Screen from '../screens/MyMDiaryOnboarding3Screen';
+import Onboarding1Screen from '../screens/Onboarding1Screen';
+import Onboarding2Screen from '../screens/Onboarding2Screen';
+import Onboarding3Screen from '../screens/Onboarding3Screen';
 
 // Registration screens
-import AvatarSelectionScreen from '../screens/MyMDiaryAvatarSelectionScreen';
-import NameInputScreen from '../screens/MyMDiaryNameInputScreen';
+import AvatarSelectionScreen from '../screens/AvatarSelectionScreen';
+import NameInputScreen from '../screens/NameInputScreen';
 
 // Main app screens
-import HomeScreen from '../screens/MyMDiaryHomeScreen';
-import CalendarScreen from '../screens/MyMDiaryCalendarScreen';
-import DiaryScreen from '../screens/MyMDiaryDiaryScreen';
-import ProfileScreen from '../screens/MyMDiaryProfileScreen';
-import EditProfileScreen from '../screens/MyMDiaryEditProfileScreen';
-import MoodSelectionScreen from '../screens/MyMDiaryMoodSelectionScreen';
-import MoodAffirmationScreen from '../screens/MyMDiaryMoodAffirmationScreen';
-import DiaryEntryScreen from '../screens/MyMDiaryDiaryEntryScreen';
-import DiaryListScreen from '../screens/MyMDiaryDiaryListScreen';
+import HomeScreen from '../screens/HomeScreen';
+import CalendarScreen from '../screens/CalendarScreen';
+import DiaryScreen from '../screens/DiaryScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import EditProfileScreen from '../screens/EditProfileScreen';
+import MoodSelectionScreen from '../screens/MoodSelectionScreen';
+import MoodAffirmationScreen from '../screens/MoodAffirmationScreen';
+import DiaryEntryScreen from '../screens/DiaryEntryScreen';
+import DiaryListScreen from '../screens/DiaryListScreen';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 const Stack = createStackNavigator<RootStackParamList>();

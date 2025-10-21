@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { storage } from '../utils/MyMDiaryStorage';
-import { UserProfile } from '../types/MyMDiaryTypes';
+import { storage } from '../utils/storage';
+import { UserProfile } from '../types';
 
 interface AppHeaderProps {
   title?: string;
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingBottom: 15,
+    paddingVertical: 15,
     backgroundColor: '#4A90E2',
   },
   title: {

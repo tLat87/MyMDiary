@@ -1,97 +1,161 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# My Mood Flower Diary 🌸
 
-# Getting Started
+A gentle space for women to connect with their emotions through daily mood tracking and personal reflection.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- **Mood Selection**: Choose from three beautiful flower moods (Pink Bloom, Blue Serenity, Golden Spirit)
+- **Personalized Affirmations**: Receive supportive messages based on your chosen mood
+- **Calendar Tracking**: Visualize your mood patterns over time
+- **Personal Diary**: Write and save your thoughts and reflections
+- **Beautiful UI**: Calming blue and white theme with cloud backgrounds
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Screenshots
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+The app includes:
+- Home screen with mood selection
+- Mood selection with flower options and descriptions
+- Affirmation screen with personalized messages
+- Calendar view for mood tracking
+- Diary functionality for personal entries
+- Profile screen with app information
 
-```sh
-# Using npm
+## Getting Started
+
+### Prerequisites
+
+- Node.js (>= 18)
+- React Native development environment set up
+- iOS Simulator or Android Emulator
+
+### Adding Your Images
+
+**Background Image:**
+- Place your background PNG image at: `src/assets/background.png`
+- This will be used as the background for all screens
+
+**Navigation Icons:**
+- Place your PNG icons in the `src/assets/icons/` folder:
+  - `home.png` - Home tab icon
+  - `calendar.png` - Calendar tab icon  
+  - `diary.png` - Diary tab icon
+  - `profile.png` - Profile tab icon
+
+**Flower Images:**
+- Place your PNG flower images in the `src/assets/blume/` folder:
+  - `pink.png` - Pink flower for Pink Bloom mood
+  - `blue.png` - Blue flower for Blue Serenity mood
+  - `yellow.png` - Yellow flower for Golden Spirit mood
+
+### Installation
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. For iOS, install pods:
+```bash
+cd ios && pod install && cd ..
+```
+
+3. Start the Metro bundler:
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+4. Run the app:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+For iOS:
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+For Android:
+```bash
+npm run android
+```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## Project Structure
 
-## Step 3: Modify your app
+```
+src/
+├── assets/            # Images and assets
+│   ├── background.png # Background image for all screens
+│   ├── icons/         # Navigation icons
+│   │   ├── home.png
+│   │   ├── calendar.png
+│   │   ├── diary.png
+│   │   └── profile.png
+│   └── blume/         # Flower images
+│       ├── pink.png
+│       ├── blue.png
+│       └── yellow.png
+├── components/        # Reusable UI components
+│   ├── AppHeader.tsx
+│   ├── CloudBackground.tsx
+│   ├── FlowerIcon.tsx
+│   └── PNGIcon.tsx
+├── data/             # Static data
+│   └── moods.ts
+├── navigation/       # Navigation configuration
+│   └── AppNavigator.tsx
+├── screens/          # App screens
+│   ├── Onboarding1Screen.tsx
+│   ├── Onboarding2Screen.tsx
+│   ├── Onboarding3Screen.tsx
+│   ├── AvatarSelectionScreen.tsx
+│   ├── NameInputScreen.tsx
+│   ├── HomeScreen.tsx
+│   ├── MoodSelectionScreen.tsx
+│   ├── MoodAffirmationScreen.tsx
+│   ├── CalendarScreen.tsx
+│   ├── DiaryScreen.tsx
+│   ├── DiaryEntryScreen.tsx
+│   ├── DiaryListScreen.tsx
+│   └── ProfileScreen.tsx
+├── types/            # TypeScript type definitions
+│   └── index.ts
+└── utils/            # Utility functions
+    └── storage.ts
+```
 
-Now that you have successfully run the app, let's make changes!
+## Technologies Used
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+- React Native
+- TypeScript
+- React Navigation
+- AsyncStorage for data persistence
+- React Native Calendars
+- React Native Vector Icons
+- React Native Linear Gradient
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Features in Detail
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### Mood Selection
+- Three mood options: Pink Bloom (warmth), Blue Serenity (calm), Golden Spirit (joy)
+- Each mood has unique descriptions and symbolism
+- Beautiful flower icons representing each mood
 
-## Congratulations! :tada:
+### Affirmations
+- Personalized messages based on selected mood
+- Share functionality to spread positivity
+- Save to calendar for tracking
 
-You've successfully run and modified your React Native App. :partying_face:
+### Calendar
+- Visual mood tracking over time
+- Tap dates to view mood entries
+- Color-coded mood indicators
 
-### Now what?
+### Diary
+- Create, edit, and delete personal entries
+- Search functionality
+- Clean, intuitive interface
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+## Contributing
 
-# Troubleshooting
+This is a personal project, but feel free to suggest improvements or report issues.
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## License
 
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is for personal use.

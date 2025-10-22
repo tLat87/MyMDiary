@@ -12,7 +12,7 @@ const CloudBackground: React.FC<CloudBackgroundProps> = ({
   backgroundImage = require('../assets/background.png') // Path to PNG background image
 }) => {
   return (
-    <SafeAreaView style={styles.safeArea} edges={['top']}>
+    <SafeAreaView style={styles.safeArea} edges={[]}>
       <ImageBackground
         source={backgroundImage}
         style={styles.container}

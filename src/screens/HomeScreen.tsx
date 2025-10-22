@@ -23,7 +23,7 @@ const HomeScreen: React.FC = () => {
               style={styles.chooseButton}
               onPress={() => navigation.navigate('MoodSelection')}
             >
-              {/* <Text style={styles.chooseButtonText}>Choose</Text> */}
+              <Text style={styles.chooseButtonText}>Choose</Text>
             </TouchableOpacity>
           </View>
         </View>

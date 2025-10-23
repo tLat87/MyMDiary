@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { storage } from '../utils/MyMDiaryStorage';
 import { UserProfile } from '../types/MyMDiaryTypes';
+import { getResponsiveSize, getResponsivePadding, getResponsiveFontSize, isTablet } from '../utils/MyMDiaryResponsive';
 
 interface AppHeaderProps {
   title?: string;
@@ -49,23 +50,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingBottom: 0,
+    paddingHorizontal: getResponsivePadding(20, 30, 40),
+    paddingVertical: getResponsivePadding(15, 20, 25),
     backgroundColor: '#4A90E2',
   },
   title: {
     color: 'white',
-    fontSize: 16,
+    fontSize: getResponsiveFontSize(16, 18, 20),
     fontWeight: 'bold',
     flex: 1,
   },
   profileContainer: {
-    marginLeft: 10,
+    marginLeft: getResponsiveSize(10, 15, 20),
   },
   profileImage: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: getResponsiveSize(40, 50, 60),
+    height: getResponsiveSize(40, 50, 60),
+    borderRadius: getResponsiveSize(20, 25, 30),
     borderWidth: 2,
     borderColor: 'white',
   },

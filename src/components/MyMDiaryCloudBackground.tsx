@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { getContentContainerStyle, isTablet } from '../utils/MyMDiaryResponsive';
 
 interface CloudBackgroundProps {
   children: React.ReactNode;
@@ -18,7 +19,9 @@ const CloudBackground: React.FC<CloudBackgroundProps> = ({
         style={styles.container}
         resizeMode="cover"
       >
-        {children}
+        <View style={[styles.contentContainer, getContentContainerStyle()]}>
+          {children}
+        </View>
       </ImageBackground>
     </SafeAreaView>
   );
@@ -29,6 +32,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
+    flex: 1,
+  },
+  contentContainer: {
     flex: 1,
   },
 });

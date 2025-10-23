@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { useFocusEffect } from '@react-navigation/native';
 import { MoodEntry } from '../types/MyMDiaryTypes';
@@ -7,6 +7,7 @@ import { storage } from '../utils/MyMDiaryStorage';
 import CloudBackground from '../components/MyMDiaryCloudBackground';
 import AppHeader from '../components/MyMDiaryAppHeader';
 import FlowerIcon from '../components/MyMDiaryFlowerIcon';
+import { getResponsivePadding } from '../utils/MyMDiaryResponsive';
 
 const CalendarScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().split('T')[0]);
@@ -62,7 +63,7 @@ const CalendarScreen: React.FC = () => {
   return (
     <CloudBackground>
       <AppHeader title="Calendar" />
-      <View style={styles.container}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <Calendar
           onDayPress={onDayPress}
           markedDates={{
@@ -128,7 +129,7 @@ const CalendarScreen: React.FC = () => {
             </View>
           )}
         </View>
-      </View>
+      </ScrollView>
     </CloudBackground>
   );
 };
@@ -136,8 +137,10 @@ const CalendarScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  contentContainer: {
     paddingHorizontal: 20,
-    paddingBottom: 100, // Padding for new navigation
+    paddingBottom: getResponsivePadding(120, 140, 160), // Extra padding for navigation
   },
   calendar: {
     borderRadius: 20,

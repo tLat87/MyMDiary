@@ -6,6 +6,7 @@ import { RootStackParamList, DiaryEntry } from '../types/MyMDiaryTypes';
 import { storage } from '../utils/MyMDiaryStorage';
 import CloudBackground from '../components/MyMDiaryCloudBackground';
 import AppHeader from '../components/MyMDiaryAppHeader';
+import { getResponsivePadding } from '../utils/MyMDiaryResponsive';
 
 type DiaryEntryScreenNavigationProp = StackNavigationProp<RootStackParamList, 'DiaryEntry'>;
 type DiaryEntryScreenRouteProp = RouteProp<RootStackParamList, 'DiaryEntry'>;
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
-    paddingBottom: 100,
+    paddingBottom: getResponsivePadding(120, 140, 160), // Extra padding for navigation
   },
   inputContainer: {
     marginBottom: 20,

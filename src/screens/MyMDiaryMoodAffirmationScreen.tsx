@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Share, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Share, Alert, ScrollView } from 'react-native';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList, MoodEntry } from '../types/MyMDiaryTypes';
@@ -7,6 +7,7 @@ import { storage } from '../utils/MyMDiaryStorage';
 import CloudBackground from '../components/MyMDiaryCloudBackground';
 import AppHeader from '../components/MyMDiaryAppHeader';
 import FlowerIcon from '../components/MyMDiaryFlowerIcon';
+import { getResponsivePadding } from '../utils/MyMDiaryResponsive';
 
 type MoodAffirmationScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MoodAffirmation'>;
 type MoodAffirmationScreenRouteProp = RouteProp<RootStackParamList, 'MoodAffirmation'>;
@@ -69,7 +70,7 @@ const MoodAffirmationScreen: React.FC = () => {
   return (
     <CloudBackground>
       <AppHeader title="Today You" />
-      <View style={styles.container}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.content}>
           <Text style={styles.todayText}>Today you</Text>
           
@@ -100,7 +101,7 @@ const MoodAffirmationScreen: React.FC = () => {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </CloudBackground>
   );
 };
@@ -108,12 +109,17 @@ const MoodAffirmationScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  contentContainer: {
+    flexGrow: 1,
     paddingHorizontal: 20,
+    paddingBottom: getResponsivePadding(120, 140, 160), // Extra padding for navigation
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    minHeight: 400, // Ensure minimum height for centering
   },
   todayText: {
     fontSize: 24,

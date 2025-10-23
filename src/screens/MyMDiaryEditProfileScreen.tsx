@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image, Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types/MyMDiaryTypes';
@@ -8,6 +8,7 @@ import { UserProfile } from '../types/MyMDiaryTypes';
 import CloudBackground from '../components/MyMDiaryCloudBackground';
 import AppHeader from '../components/MyMDiaryAppHeader';
 import { launchImageLibrary, ImagePickerResponse, MediaType } from 'react-native-image-picker';
+import { getResponsivePadding } from '../utils/MyMDiaryResponsive';
 
 type EditProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
@@ -83,7 +84,7 @@ const EditProfileScreen: React.FC = () => {
   return (
     <CloudBackground>
       <AppHeader title="Edit Profile" />
-      <View style={styles.container}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.content}>
           <View style={styles.avatarSection}>
             <Text style={styles.sectionTitle}>Avatar</Text>
@@ -120,7 +121,7 @@ const EditProfileScreen: React.FC = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </CloudBackground>
   );
 };
@@ -128,7 +129,10 @@ const EditProfileScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  contentContainer: {
     paddingHorizontal: 20,
+    paddingBottom: getResponsivePadding(120, 140, 160), // Extra padding for navigation
   },
   content: {
     flex: 1,

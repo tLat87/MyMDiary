@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types/MyMDiaryTypes';
 import CloudBackground from '../components/MyMDiaryCloudBackground';
 import AppHeader from '../components/MyMDiaryAppHeader';
 import FlowerIcon from '../components/MyMDiaryFlowerIcon';
+import { getResponsiveSize, getResponsivePadding, getResponsiveFontSize } from '../utils/MyMDiaryResponsive';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
@@ -15,7 +16,7 @@ const HomeScreen: React.FC = () => {
   return (
     <CloudBackground>
       <AppHeader />
-      <View style={styles.container}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.content}>
           <View style={styles.moodCard}>
             <Text style={styles.moodTitle}>Choose your mood</Text>
@@ -27,7 +28,7 @@ const HomeScreen: React.FC = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </CloudBackground>
   );
 };
@@ -35,18 +36,22 @@ const HomeScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingBottom: 100, // Padding for new navigation
+  },
+  contentContainer: {
+    flexGrow: 1,
+    paddingHorizontal: getResponsivePadding(20, 30, 40),
+    paddingBottom: getResponsivePadding(120, 140, 160), // Extra padding for navigation
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    minHeight: 400, // Ensure minimum height for centering
   },
   moodCard: {
     backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 30,
+    borderRadius: getResponsiveSize(20, 25, 30),
+    padding: getResponsivePadding(30, 40, 50),
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -58,17 +63,17 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   moodTitle: {
-    fontSize: 24,
+    fontSize: getResponsiveFontSize(24, 28, 32),
     fontWeight: 'bold',
     color: '#4A90E2',
-    marginBottom: 20,
+    marginBottom: getResponsiveSize(20, 25, 30),
     textAlign: 'center',
   },
   chooseButton: {
     backgroundColor: '#4A90E2',
-    paddingHorizontal: 40,
-    paddingVertical: 15,
-    borderRadius: 25,
+    paddingHorizontal: getResponsivePadding(40, 50, 60),
+    paddingVertical: getResponsivePadding(15, 18, 22),
+    borderRadius: getResponsiveSize(25, 30, 35),
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
   },
   chooseButtonText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: getResponsiveFontSize(18, 20, 22),
     fontWeight: 'bold',
   },
 });

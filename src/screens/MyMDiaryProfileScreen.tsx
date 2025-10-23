@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Share, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Share, Alert, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useFocusEffect } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -8,6 +8,7 @@ import CloudBackground from '../components/MyMDiaryCloudBackground';
 import AppHeader from '../components/MyMDiaryAppHeader';
 import { storage } from '../utils/MyMDiaryStorage';
 import { UserProfile } from '../types/MyMDiaryTypes';
+import { getResponsiveSize, getResponsivePadding, getResponsiveFontSize, isTablet } from '../utils/MyMDiaryResponsive';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
@@ -53,7 +54,7 @@ const ProfileScreen: React.FC = () => {
   return (
     <CloudBackground>
       <AppHeader title="Profile" />
-      <View style={styles.container}>
+      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.profileSection}>
           <View style={styles.profileCard}>
             <Image
@@ -83,7 +84,7 @@ const ProfileScreen: React.FC = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </CloudBackground>
   );
 };
@@ -91,17 +92,19 @@ const ProfileScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingBottom: 100, // Padding for new navigation
+  },
+  contentContainer: {
+    paddingHorizontal: getResponsivePadding(20, 30, 40),
+    paddingBottom: getResponsivePadding(120, 140, 160), // Extra padding for navigation
   },
   profileSection: {
-    marginTop: 20,
-    marginBottom: 30,
+    marginTop: getResponsiveSize(20, 30, 40),
+    marginBottom: getResponsiveSize(30, 40, 50),
   },
   profileCard: {
     backgroundColor: '#87CEEB',
-    borderRadius: 20,
-    padding: 30,
+    borderRadius: getResponsiveSize(20, 25, 30),
+    padding: getResponsivePadding(30, 40, 50),
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -113,35 +116,35 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: getResponsiveSize(100, 120, 140),
+    height: getResponsiveSize(100, 120, 140),
+    borderRadius: getResponsiveSize(50, 60, 70),
     borderWidth: 4,
     borderColor: 'white',
-    marginBottom: 20,
+    marginBottom: getResponsiveSize(20, 25, 30),
   },
   nameButton: {
     backgroundColor: 'white',
-    paddingHorizontal: 30,
-    paddingVertical: 12,
-    borderRadius: 20,
-    marginBottom: 10,
+    paddingHorizontal: getResponsivePadding(30, 40, 50),
+    paddingVertical: getResponsivePadding(12, 15, 18),
+    borderRadius: getResponsiveSize(20, 25, 30),
+    marginBottom: getResponsiveSize(10, 12, 15),
   },
   nameText: {
     color: '#4A90E2',
-    fontSize: 18,
+    fontSize: getResponsiveFontSize(18, 20, 22),
     fontWeight: 'bold',
   },
   editButton: {
     backgroundColor: 'white',
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    borderRadius: 15,
+    paddingHorizontal: getResponsivePadding(20, 25, 30),
+    paddingVertical: getResponsivePadding(8, 10, 12),
+    borderRadius: getResponsiveSize(15, 18, 20),
     alignSelf: 'flex-end',
   },
   editButtonText: {
     color: '#4A90E2',
-    fontSize: 14,
+    fontSize: getResponsiveFontSize(14, 16, 18),
     fontWeight: 'bold',
   },
   aboutSection: {
@@ -149,8 +152,8 @@ const styles = StyleSheet.create({
   },
   aboutCard: {
     backgroundColor: '#87CEEB',
-    borderRadius: 20,
-    padding: 25,
+    borderRadius: getResponsiveSize(20, 25, 30),
+    padding: getResponsivePadding(25, 30, 35),
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -162,26 +165,26 @@ const styles = StyleSheet.create({
   },
   aboutTitle: {
     color: 'white',
-    fontSize: 18,
+    fontSize: getResponsiveFontSize(18, 20, 22),
     fontWeight: 'bold',
-    marginBottom: 15,
+    marginBottom: getResponsiveSize(15, 18, 20),
   },
   aboutText: {
     color: 'white',
-    fontSize: 14,
-    lineHeight: 22,
-    marginBottom: 20,
+    fontSize: getResponsiveFontSize(14, 16, 18),
+    lineHeight: getResponsiveSize(22, 24, 26),
+    marginBottom: getResponsiveSize(20, 25, 30),
   },
   shareButton: {
     backgroundColor: 'white',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 15,
+    paddingHorizontal: getResponsivePadding(20, 25, 30),
+    paddingVertical: getResponsivePadding(10, 12, 15),
+    borderRadius: getResponsiveSize(15, 18, 20),
     alignSelf: 'flex-end',
   },
   shareButtonText: {
     color: '#4A90E2',
-    fontSize: 14,
+    fontSize: getResponsiveFontSize(14, 16, 18),
     fontWeight: 'bold',
   },
 });

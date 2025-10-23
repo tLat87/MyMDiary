@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import PNGIcon from '../components/MyMDiaryPNGIcon';
+import { getResponsiveSize, isTablet } from '../utils/MyMDiaryResponsive';
 
 import { MainTabParamList, RootStackParamList, OnboardingStackParamList, RegistrationStackParamList } from '../types/MyMDiaryTypes';
 import { storage } from '../utils/MyMDiaryStorage';
@@ -73,16 +74,22 @@ const MainTabNavigator = () => {
         tabBarStyle: {
           backgroundColor: '#77B0E0',
           borderTopWidth: 0,
-          height: 80,
-          paddingBottom: 15,
-          borderTopLeftRadius: 25,
-          borderTopRightRadius: 25,
+          height: getResponsiveSize(80, 90, 100),
+          paddingBottom: getResponsiveSize(15, 20, 25),
+          borderTopLeftRadius: getResponsiveSize(25, 30, 35),
+          borderTopRightRadius: getResponsiveSize(25, 30, 35),
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
           elevation: 0,
           shadowOpacity: 0,
+          ...(isTablet() && {
+            maxWidth: 600,
+            alignSelf: 'center',
+            left: 'auto',
+            right: 'auto',
+          }),
         },
         headerStyle: {
           backgroundColor: '#4A90E2',

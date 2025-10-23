@@ -7,6 +7,7 @@ import { RootStackParamList, DiaryEntry } from '../types/MyMDiaryTypes';
 import { storage } from '../utils/MyMDiaryStorage';
 import CloudBackground from '../components/MyMDiaryCloudBackground';
 import AppHeader from '../components/MyMDiaryAppHeader';
+import { getResponsivePadding } from '../utils/MyMDiaryResponsive';
 
 type DiaryScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 20,
-    paddingBottom: 100, // Padding for new navigation
+    paddingBottom: getResponsivePadding(120, 140, 160), // Extra padding for navigation
   },
   searchContainer: {
     flexDirection: 'row',
